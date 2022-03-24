@@ -22,18 +22,20 @@ describe('Round', function() {
   });
 
   it('should be a function', function() {
-    const round = new Round();
     expect(Round).to.be.a('function');
   });
 
   it('should be an instance of Round', function() {
-    const round = new Round();
     expect(round).to.be.an.instanceof(Round);
   });
 
   it('should pass through a deck to be played', function() {
     expect(round.deck).to.be.an.instanceof(Deck);
     expect(round.deck).to.equal(deck);
+  });
+
+  it('should start with the first card in the deck', function() {
+    expect(round.currentCard).to.equal(deck.cards[0]);
   });
 
   it('should have a method that returns the current card being played', function() {

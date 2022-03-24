@@ -8,7 +8,6 @@ const Round = require('../src/Round');
 
 class Game {
   constructor() {
-    this.currentRound = this.createRound()
   };
 
   start() {
@@ -18,15 +17,12 @@ class Game {
   };
 
   createRound() {
-    let cardsArray = [];
-    prototypeQuestions.forEach((data) => {
-      var card = new Card(data.id, data.question, data.answers, data.correctAnswer)
-      cardsArray.push(card)
+    let cardsArray = prototypeQuestions.map((data) => {
+      return new Card(data.id, data.question, data.answers, data.correctAnswer)
     });
-
     let deck = new Deck(cardsArray);
     let round = new Round(deck);
-    return round;
+    this.currentRound = round;
   };
 
   printMessage(deck, round) {
