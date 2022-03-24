@@ -5,15 +5,15 @@ class Round {
     this.deck = deck;
     this.turns = 0;
     this.incorrectGuesses = [];
-    this.currentCard
+    this.currentCard = this.determineCurrentCard();
   };
 
-  determineCurrentCard(constructorDeck) {
-    return constructorDeck.cards
+  determineCurrentCard() {
+    return this.currentCard = this.deck.cards[this.turns];
   };
 
   returnCurrentCard() {
-    return this.currentCard = this.deck.cards[this.turns];
+    return this.currentCard;
   };
 
   takeTurn(guess) {
@@ -22,6 +22,7 @@ class Round {
       this.incorrectGuesses.push(this.currentCard.id);
     };
     this.turns += 1;
+    this.determineCurrentCard();
     return turn.giveFeedback();
   };
 
