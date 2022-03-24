@@ -17,12 +17,9 @@ class Game {
   };
 
   createRound() {
-    let cardsArray = [];
-    prototypeQuestions.forEach((data) => {
-      var card = new Card(data.id, data.question, data.answers, data.correctAnswer)
-      cardsArray.push(card)
+    let cardsArray = prototypeQuestions.map((data) => {
+      return new Card(data.id, data.question, data.answers, data.correctAnswer)
     });
-
     let deck = new Deck(cardsArray);
     let round = new Round(deck);
     this.currentRound = round;
